@@ -1,14 +1,23 @@
 # Vision-Language Feature Refinement for Zero-Shot Object Counting  
-[![Paper](https://img.shields.io/badge/Read-Paper-blue)](https://ieeexplore.ieee.org/document/10785495)  
-
+[![IEEE Paper](https://img.shields.io/badge/IEEE-Paper-blue)](https://ieeexplore.ieee.org/document/10785495)  
+[![Free Copy](https://img.shields.io/badge/Free-Copy-green)](https://drive.google.com/file/d/1TFptlGLVz50RDIhxHkd5t7udxOn3Wokj/view)
 
 ### What's Inside  
-- [Setup Instructions](#get-started)  
+- [Model Overview](#model-overview)
+- [Setup Instructions](#get-started)
 - [Code Execution](#run-the-model)  
-- [Performance Metrics](#model-performance)  
-- [Acknowledgements](#acknowledgements)  
+- [Performance](#model-performance)  
+- [Acknowledgements](#reference)  
 
 ---
+
+## Model Overview
+
+![Architecture](figs/Architecture_ZSOC_VLM.png)
+
+The proposed VLC model addresses the **zero-shot object counting task**. The **input image** and **text prompts** are first processed by the **CLIP encoders**. A **cross-modal encoder** then learns joint representations optimized by aligning **text features** with **positive patch-level visual features** to capture contextually relevant information. The **refinement module** enhances visual feature sets using: Affine transformation, and Atrous Spatial Pyramid Pooling (ASPP) for multi-scale contextual features. The fusion module then adaptively combines the feature sets. Finally, the decoder generates a density map to predict object counts.
+
+
 
 ## Get Started  
 ### 📂 Download Your Datasets  
@@ -74,8 +83,13 @@ Specify weights using ```--ckpt_used``` in test.sh
 | **FSC-test** | 13.57   | 100.79  |
 | **CARPK**    | 5.91    | 7.47    |
 
+## 🎨 Qualitative Results
 
+**Qualitative results on FSC-147 (a-f) and CARPK (g-h). GT denotes ground-truth count.**  
 
-## Acknowledgements
+<p align="center">
+  <img src="figs/qualitative2.png" alt="Qualitative Results" width="60%">
+</p>
 
-This project is built upon the work of [CounTR](https://github.com/Verg-Avesta/CounTR) and [VLCounter](https://github.com/Seunggu0305/VLCounter).
+## Reference
+[CounTR](https://github.com/Verg-Avesta/CounTR) and [VLCounter](https://github.com/Seunggu0305/VLCounter).
